@@ -1,7 +1,9 @@
 import React from 'react'
 
 // Components
+import Title from './Components/Title'
 import List from './Components/List'
+import data from './Data/data'
 
 class App extends React.Component {
   constructor(props){
@@ -14,20 +16,18 @@ class App extends React.Component {
   render() {
     const styles = {
       wrapper: {
-        width: '400px',
-        maxWidth: '400px',
         backgroundColor: '#eee',
         textAlign: 'center',
-        marginTop: '-16px',
-        paddingTop: '20px',
-        paddingBottom: '20px'
+        display: 'flex',
+        flexDirection: 'column',
+        maxWidth: '400px'
       }
     }
 
     return (
-      <div style={styles.wrapper}>
-        <p>SAVING JAR</p>
-        <List stateTest={this.state.stateTest} />
+      <div className="container-fluid" style={styles.wrapper}>
+        <Title />
+        <List data={} />
       </div>
     );
   }
