@@ -3,31 +3,50 @@ import React from 'react'
 // Components
 import Title from './Components/Title'
 import List from './Components/List'
-import data from './Data/data'
+import AddAmount from './Components/AddAmount';
+
+const data = {
+  jars: [
+    {
+      name: 'Holiday Fund',
+      amount: 97.56,
+      target: 100.00
+    },
+    {
+      name: 'Savings',
+      amount: 35.26,
+      target: 1000.00
+    },
+    {
+      name: 'Car Repairs',
+      amount: 82.96,
+      target: 100.00
+    },
+  ]
+}
 
 class App extends React.Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      stateTest: 'test'
-    }
+  addAmount = (addedAmount, indexToChange) => {
+    this.setState({
+      jars: this.state.jars.map((jar, index) => {
+        if(index === indexToChange){
+          const newAmount = this.amount + addedAmount
+          return{
+            ...jar,
+            newAmount
+          }
+        }
+        return jar
+      })
+    })
   }
 
   render() {
-    const styles = {
-      wrapper: {
-        backgroundColor: '#eee',
-        textAlign: 'center',
-        display: 'flex',
-        flexDirection: 'column',
-        maxWidth: '400px'
-      }
-    }
-
     return (
-      <div className="container-fluid" style={styles.wrapper}>
+      <div className="container-fluid">
         <Title />
-        <List data={} />
+        <List data={data}
+              addAmount={this.addAmount} />
       </div>
     );
   }
