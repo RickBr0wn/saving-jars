@@ -1,46 +1,31 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
 // Components
 import AddAmount from './AddAmount'
 
-class List extends React.Component{
-	constructor(props){
-		super(props)
-		this.state = this.props
+const List = props =>
+	
+	<ul className="list-unstyled">
+		{
+			props.jars.map((jar, index) => {
+				return(
+					// This is where each handler gets the index from
+					<div key={index}>
+						<li>{jar.name}</li>
+						<AddAmount 	amount={jar.amount}
+												key={index}
+												addAmount={amount => props.addAmountAt(amount, index)}	/>
 
-		console.log(this.state)
-	}
+					</div>
+				)
+			})
+		}
+	</ul>
 
-	addFunds(event){
-		event.preventDefault()
-		const { funds } = this.state
-		// const amount = this.props.data.jars.amount
-		const newFunds = this.newFunds.value
-
-		console.log(funds)
-	}
-
-	render(){
-		const { data } = this.props
-
-		return(
-			<div>
-				<ul className="list-unstyled">
-					{
-						//Picks up jar index here
-						data.jars.map((jar, index) => {
-							return(
-								<div key={jar.index}>
-									<li>{jar.name}</li>
-									<AddAmount amount={jar.amount} />
-								</div>
-							)
-						})
-					}
-				</ul>
-			</div>
-		)
-	}
+List.propTypes = {
+	jars: PropTypes.array.isRequired,
+	addAmountAt: PropTypes.func.isRequired
 }
 
 export default List

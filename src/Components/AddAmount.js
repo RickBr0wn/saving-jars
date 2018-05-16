@@ -1,26 +1,25 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-class AddAmount extends React.Component{
-  constructor(props){
-    super(props)
+// Components
+import ActualAmount from 'react'
+import Amount from './Amount'
+
+const AddAmount = props => {
+  return(
+    <div>
+      {props.amount}
+      <input type="text" onChange={props.addAmount} ></input>
+      <button onClick={props.addAmount} className="btn btn-sm">Add</button>
+      <Amount amount={props.amount} />
+    </div>
+  )
+}
+  
     
-    this.amount = this.props.amount
-  }
-
-  render(){
-    console.log(this.amount)
-    return(
-      <div>
-        <li>{this.amount}</li>
-        <form className="form-inline" onSubmit={event => this.addAmount(event)}>
-          <div className="form-group">
-            <input ref={input => this.newFunds = input} type="text" placeholder="£" className="form-control" id="newJarNameInput" />
-          </div>
-          <button type="submit" className="btn btn-primary">Add Funds</button>
-        </form>
-      </div>
-    )
-  }
+AddAmount.propTypes = {
+  amount: PropTypes.number.isRequired,
+  addAmount: PropTypes.func.isRequired
 }
 
 export default AddAmount
