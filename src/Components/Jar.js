@@ -6,17 +6,26 @@ import JarName from './JarName'
 import JarAmount from './JarAmount'
 
 const Jar = props => {
+	let newAmount
 	return(
-		<li>
+		<li className="jar">
 			<JarName name={props.name} />
 			<JarAmount amount={props.amount} />
-			<form onSubmit={this.handleAddAmount}>
-        <label>
-          Add:
-          <input type="text" onChange={this.handleChange} />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+			<form onSubmit={event => 	{
+													props.handleAddAmount(event, newAmount)									
+													event.target.value = props.amountToBeAdded
+												}}>
+				<label>
+					ADD--
+					<input 	type="text" 
+									onChange={(event) => {
+																newAmount = Number(event.target.value)
+																return newAmount
+															}
+					} />
+				</label>
+				<input type="submit" value="Submit" />
+			</form>
 		</li>
 	)
 } 
@@ -24,7 +33,8 @@ const Jar = props => {
 Jar.propTypes = {
 	name: PropTypes.string.isRequired,
 	amount: PropTypes.number.isRequired,
-	handleAddAmount: PropTypes.func.isRequired
+	handleAddAmount: PropTypes.func.isRequired,
+	amountToBeAdded: PropTypes.number.isRequired
 }
 
 export default Jar
