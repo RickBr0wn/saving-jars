@@ -1,5 +1,9 @@
 import React from "react"
+
+//Components
 import NewJar from './NewJar'
+import { withStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
 
 class JarList extends React.Component {
   constructor() {
@@ -102,8 +106,14 @@ class JarList extends React.Component {
             this.state.jars.map((jar, index) => {
               return(
                 <div className="jar" key={index}>
-                  <li>{jar.name}</li>
-                  <li>{jar.amount}</li>
+									<TextField 	id={jar.name}
+															label={jar.name}
+															placeholder="Amount to Save"
+															onChange={event => this.handleChangeAt(event, index)} 
+															value={jar.amountToBeAdded} />
+									<li>{jar.name}</li>
+									<li>{jar.amount}</li>
+									<li>{jar.amountToBeAdded}</li>
 
                   <form onSubmit={event => this.handleSubmit(event, index)}>
                     <label>Money To Add To Jar
