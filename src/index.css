@@ -1,0 +1,53 @@
+body{
+  background-color: #EEEEEE !important;
+}
+
+.butt {
+  outline:0 !important;
+}
+
+.amount{
+  font-size: 48px;
+  padding-left: 20px;
+}
+
+.title{
+  font-size: 32px;
+  padding-left: 20px;
+}
+
+.jar{
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 20px 10px 20px 30px;
+  margin: 25px auto;
+  -webkit-box-shadow: 3px 3px 11px 0px rgba(0,0,0,0.2);
+  -moz-box-shadow: 3px 3px 11px 0px rgba(0,0,0,0.2);
+  box-shadow: 3px 3px 11px 0px rgba(0,0,0,0.2);
+}
+
+.controls{
+  margin: 0 auto;
+  padding-left: 20px;
+  width: 100%;
+}
+
+.test{
+  margin: 0 auto;
+  width: 385px;
+}
+
+.row{
+  margin-left: 180px;
+  margin-top: -20px;
+}
+
+.row p{
+  margin-top: 25px;
+  color: #3F51B5;
+  font-weight: 700;
+}
+
+ul{
+  padding: 0px;
+}
