@@ -2,13 +2,7 @@ import React from "react"
 
 //Components
 import NewJar from './NewJar'
-import TextField from '@material-ui/core/TextField'
-import Button from '@material-ui/core/Button'
-import AddIcon from '@material-ui/icons/Add'
 import { withStyles } from '@material-ui/core/styles'
-import Icon from '@material-ui/core/Icon'
-import IconButton from '@material-ui/core/IconButton'
-import DeleteIcon from '@material-ui/icons/Delete'
 import AddAmount from './AddAmount'
 import RemoveJar from './RemoveJar'
 
