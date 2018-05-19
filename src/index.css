@@ -30,6 +30,7 @@ body{
   margin: 0 auto;
   padding-left: 20px;
   width: 100%;
+  display: flex;
 }
 
 .test{
@@ -50,4 +51,9 @@ body{
 
 ul{
   padding: 0px;
+}
+
+.remove-icon{
+  margin-top: 10px;
+  margin-left: -10px;
 }

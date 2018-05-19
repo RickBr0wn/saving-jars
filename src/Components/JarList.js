@@ -2,19 +2,21 @@ import React from "react"
 
 //Components
 import NewJar from './NewJar'
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import AddIcon from '@material-ui/icons/Add';
-import { withStyles } from '@material-ui/core/styles';
-import Icon from '@material-ui/core/Icon';
-import IconButton from '@material-ui/core/IconButton';
-import DeleteIcon from '@material-ui/icons/Delete';
+import TextField from '@material-ui/core/TextField'
+import Button from '@material-ui/core/Button'
+import AddIcon from '@material-ui/icons/Add'
+import { withStyles } from '@material-ui/core/styles'
+import Icon from '@material-ui/core/Icon'
+import IconButton from '@material-ui/core/IconButton'
+import DeleteIcon from '@material-ui/icons/Delete'
+import AddAmount from './AddAmount'
+import RemoveJar from './RemoveJar'
 
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
   },
-});
+})
 
 class JarList extends React.Component {
   constructor() {
@@ -114,12 +116,12 @@ class JarList extends React.Component {
   }
 
   handleNewJarDialogOpen = () => {
-    this.setState({ newJarDialogOpen: true });
-  };
+    this.setState({ newJarDialogOpen: true })
+  }
 
   handleNewJarDialogClose = () => {
-    this.setState({ newJarDialogOpen: false });
-  };
+    this.setState({ newJarDialogOpen: false })
+  }
 
   render() {
     return (
@@ -132,26 +134,14 @@ class JarList extends React.Component {
                   <div className="title">{jar.name}</div>
                   <div className="amount">£{jar.amount}</div>
                   <div className="controls">
-                    <TextField 	id={jar.name}
-                                label="Amount to save"
-                                placeholder="£"
-                                onChange={event => this.handleChangeAt(event, index)} 
-                                value={jar.amountToBeAdded} />
-                    <IconButton onClick={event => this.handleSubmit(event, index)}
-                                className="butt" 
-                                aria-label="add" >
-                      <AddIcon />
-                    </IconButton>
-                    <IconButton onClick={() => this.handleRemoveAt(index)}
-                                aria-label="Delete"
-                                className="butt"
-                                type="submit">
-                      <DeleteIcon />
-                    </IconButton>
+                    <AddAmount  name={jar.name}
+                                handleChangeAt={event => this.handleChangeAt(event, index)}
+                                amountToBeAdded={jar.amountToBeAdded}
+                                handleSubmit={event => this.handleSubmit(event, index)} />
+
+                    <RemoveJar handleRemove={() => this.handleRemoveAt(index)} />
                   </div>
-                  
                 </div>
-                
               ) 
             })
           }
