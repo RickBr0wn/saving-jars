@@ -20,6 +20,7 @@ class JarList extends React.Component {
   constructor() {
     super()
     this.state = {
+      newJarDialogOpen: false,
 			pendingJar: '',
       jars: [
         {
@@ -47,7 +48,9 @@ class JarList extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this)
 		this.handleNewJarNameChangeAt = this.handleNewJarNameChangeAt.bind(this)
 		this.handleNewJarSubmit = this.handleNewJarSubmit.bind(this)
-		this.handleRemoveAt = this.handleRemoveAt.bind(this)
+    this.handleRemoveAt = this.handleRemoveAt.bind(this)
+    this.handleNewJarDialogOpen = this.handleNewJarDialogOpen.bind(this)
+    this.handleNewJarDialogClose = this.handleNewJarDialogClose.bind(this)
 
 	}
 
@@ -71,7 +74,8 @@ class JarList extends React.Component {
 				...this.state.jars
 			],
 			pendingJar: ''
-		})
+    })
+    this.handleNewJarDialogClose()
 	}
 
 	handleNewJarNameChangeAt(event){
@@ -108,6 +112,14 @@ class JarList extends React.Component {
       })
     })
   }
+
+  handleNewJarDialogOpen = () => {
+    this.setState({ newJarDialogOpen: true });
+  };
+
+  handleNewJarDialogClose = () => {
+    this.setState({ newJarDialogOpen: false });
+  };
 
   render() {
     return (
@@ -147,9 +159,12 @@ class JarList extends React.Component {
         <br />
         <div className="row">
           <p>CREATE A NEW JAR</p>
-          <NewJar pendingJar={this.state.pendingJar}
-                  handleNewJarSubmit={this.handleNewJarSubmit}
-                  handleNewJarNameChangeAt={this.handleNewJarNameChangeAt} />
+          <NewJar pendingJar = {this.state.pendingJar}
+                  handleNewJarSubmit = {this.handleNewJarSubmit}
+                  handleNewJarNameChangeAt = {this.handleNewJarNameChangeAt}
+                  handleNewJarDialogOpen = {this.handleNewJarDialogOpen}
+                  newJarDialogOpen = {this.state.newJarDialogOpen}
+                  handleNewJarDialogClose = {this.handleNewJarDialogClose}  />
         </div>
       </div>
     )
