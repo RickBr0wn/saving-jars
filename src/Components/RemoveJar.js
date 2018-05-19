@@ -7,7 +7,7 @@ import DeleteIcon from '@material-ui/icons/Delete'
 const RemoveJar = props => {
   return(
     <div className="remove-icon">
-      <IconButton onClick={props.handleRemove}
+      <IconButton onClick={props.handleRemoveAt}
                   aria-label="Delete"
                   className="butt"
                   type="submit">
