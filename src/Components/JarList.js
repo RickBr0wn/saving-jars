@@ -9,6 +9,7 @@ import { withStyles } from '@material-ui/core/styles'
 import Icon from '@material-ui/core/Icon'
 import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/Delete'
+import AddAmount from './AddAmount'
 
 const styles = theme => ({
   button: {
@@ -132,16 +133,16 @@ class JarList extends React.Component {
                   <div className="title">{jar.name}</div>
                   <div className="amount">£{jar.amount}</div>
                   <div className="controls">
-                    <TextField 	id={jar.name}
-                                label="Amount to save"
-                                placeholder="£"
-                                onChange={event => this.handleChangeAt(event, index)} 
-                                value={jar.amountToBeAdded} />
-                    <IconButton onClick={event => this.handleSubmit(event, index)}
-                                className="butt" 
-                                aria-label="add" >
-                      <AddIcon />
-                    </IconButton>
+
+                    <AddAmount  name={jar.name}
+                                handleChangeAt={event => this.handleChangeAt(event, index)}
+                                amountToBeAdded={jar.amountToBeAdded}
+                                handleSubmit={event => this.handleSubmit(event, index)} />
+
+                    {/* 
+                    TO DO 
+                      <RemoveJar /> */}
+
                     <IconButton onClick={() => this.handleRemoveAt(index)}
                                 aria-label="Delete"
                                 className="butt"
