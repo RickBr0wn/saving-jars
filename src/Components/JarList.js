@@ -10,6 +10,7 @@ import Icon from '@material-ui/core/Icon'
 import IconButton from '@material-ui/core/IconButton'
 import DeleteIcon from '@material-ui/icons/Delete'
 import AddAmount from './AddAmount'
+import RemoveJar from './RemoveJar'
 
 const styles = theme => ({
   button: {
@@ -133,22 +134,12 @@ class JarList extends React.Component {
                   <div className="title">{jar.name}</div>
                   <div className="amount">£{jar.amount}</div>
                   <div className="controls">
-
                     <AddAmount  name={jar.name}
                                 handleChangeAt={event => this.handleChangeAt(event, index)}
                                 amountToBeAdded={jar.amountToBeAdded}
                                 handleSubmit={event => this.handleSubmit(event, index)} />
 
-                    {/* 
-                    TO DO 
-                      <RemoveJar /> */}
-
-                    <IconButton onClick={() => this.handleRemoveAt(index)}
-                                aria-label="Delete"
-                                className="butt"
-                                type="submit">
-                      <DeleteIcon />
-                    </IconButton>
+                    <RemoveJar handleRemove={() => this.handleRemoveAt(index)} />
                   </div>
                 </div>
               ) 
