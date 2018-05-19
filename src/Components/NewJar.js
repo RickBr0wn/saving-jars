@@ -35,15 +35,7 @@ class NewJar extends React.Component{
 
   render(){
     const { classes } = this.props;
-    return(
-      // <form onSubmit={event => props.handleNewJarSubmit(event)}>
-      //   <label>Name of New Jar
-      //   <input  type="text"
-      //           value={props.pendingJar}
-      //           onChange={props.handleNewJarNameChangeAt} />
-      //   </label>
-      //   <input type="submit" value="submit" />
-      // </form>        
+    return(        
       <div>
         <Button variant="fab" 
                 color="primary" 

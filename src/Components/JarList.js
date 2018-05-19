@@ -127,13 +127,7 @@ class JarList extends React.Component {
                                 value={jar.amountToBeAdded} />
                     <IconButton onClick={event => this.handleSubmit(event, index)}
                                 className="butt" 
-                            // color="primary"
-                            // variant="fab" 
-                            // color="primary" 
-                            aria-label="add" 
-                            // size="small"
-                            // className={classes.button}
-                            >
+                                aria-label="add" >
                       <AddIcon />
                     </IconButton>
                     <IconButton onClick={() => this.handleRemoveAt(index)}
