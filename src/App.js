@@ -1,11 +1,12 @@
 import React from 'react'
 
+
 // Components
-import Title from './Components/Title'
 import JarList from './Components/JarList'
+import Title from './Components/Title'
 
 const App = () => 
-      <div className="container">
+      <div>
         <Title />
         <JarList />
       </div>
