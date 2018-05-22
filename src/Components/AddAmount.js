@@ -9,9 +9,9 @@ const AddAmount = props => {
       <TextField 	id={props.name}
                   label="Amount to save"
                   placeholder="£"
-                  onChange={props.handleChangeAt} 
+                  onChange={props.handleAmountChangeAt} 
                   value={props.amountToBeAdded} />
-      <IconButton onClick={props.handleSubmit}
+      <IconButton onClick={props.handleAmountSubmit}
                   className="butt" 
                   aria-label="add" >
         <AddIcon />

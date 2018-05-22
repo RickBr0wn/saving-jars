@@ -24,9 +24,9 @@ const JarList = props => {
                   <div className="amount">£{jar.amount}</div>
                   <div className="controls">
                     <AddAmount  name={jar.name}
-                                handleChangeAt={event => props.handleChangeAt(event, index)}
+                                handleAmountChangeAt={event => props.handleAmountChangeAt(event, index)}
                                 amountToBeAdded={jar.amountToBeAdded}
-                                handleSubmit={event => props.handleSubmit(event, index)} />
+                                handleAmountSubmit={event => props.handleAmountSubmit(event, index)} />
 
                     <RemoveJar handleRemoveAt={() => props.handleRemoveAt(index)} />
                   </div>
