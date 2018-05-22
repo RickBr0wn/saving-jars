@@ -19,7 +19,6 @@ const styles = theme => ({
 
 const NewJar = props => {
   const { classes } = props
-  console.log(props)
   return(        
     <div>
       <Button variant="fab" 
@@ -31,7 +30,7 @@ const NewJar = props => {
       </Button>
       <Dialog
         open={props.newJarDialogOpen}
-        onClose={this.handleClose}
+        onClose={this.handleNewJarDialogOpen}
         aria-labelledby="form-dialog-title">
         <DialogTitle id="form-dialog-title">Create A New Savings Jar</DialogTitle>
         <DialogContent>
@@ -46,7 +45,7 @@ const NewJar = props => {
             onChange={props.handleNewJarNameChangeAt} />
         </DialogContent>
         <DialogActions>
-          <Button onClick={props.handleNewJarDialogClose} color="primary">
+          <Button onClick={props.handleNewJarDialogOpen} color="primary">
             Cancel
           </Button>
           <Button onClick={props.handleNewJarSubmit} color="primary">

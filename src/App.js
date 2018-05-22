@@ -10,48 +10,72 @@ class App extends React.Component{
     super()
     this.state = {
       newJarDialogOpen: false,
+      removeJarDialogOpen: false,
 			pendingJar: '',
       jars: [
         {
           name: "Holiday Fund",
           amount: 0.00.toFixed(2),
           amountToBeAdded: '',
-          target: 100.0
+          target: 100.0,
+          toBeRemoved: false
         },
         {
           name: "Savings",
           amount: 35.26,
           amountToBeAdded: '',
-          target: 1000.0
+          target: 1000.0,
+          toBeRemoved: false
         },
         {
           name: "Car Repairs",
           amount: 82.96,
           amountToBeAdded: '',
-          target: 100.0
+          target: 100.0,
+          toBeRemoved: false
         }
       ]
 		}
-		
-    this.handleChangeAt = this.handleChangeAt.bind(this)
-		this.handleSubmit = this.handleSubmit.bind(this)
-		this.handleNewJarNameChangeAt = this.handleNewJarNameChangeAt.bind(this)
-		this.handleNewJarSubmit = this.handleNewJarSubmit.bind(this)
-    this.handleRemoveAt = this.handleRemoveAt.bind(this)
-    this.handleNewJarDialogOpen = this.handleNewJarDialogOpen.bind(this)
-    this.handleNewJarDialogClose = this.handleNewJarDialogClose.bind(this)
-
 	}
 
-	handleRemoveAt = index =>
-		this.setState({
-			jars: [
-				...this.state.jars.slice(0, index),
-				...this.state.jars.slice(index +1)
-			]
-		})
+  // Remove
+  handleRemoveAt = () => {
+    const newJar = this.state.jars.filter(
+      item => item.toBeRemoved === !true
+    )
+    this.setState({
+      jars: [...newJar]
+    })
+    this.handleRemoveDialogOpen()
+  }
+
+	changeRemoveBool = (event, indexToBeChanged) => {
+    this.setState({
+      jars: this.state.jars.map((item, index) => {
+        if (index === indexToBeChanged) {
+          return {
+            ...item,
+            toBeRemoved: true
+          }
+        }
+        return item
+      })
+    })
+    this.handleRemoveDialogOpen()
+  }
+
+  handleRemoveDialogOpen = () =>{
+    const tempRemoveDialogOpen = this.state.removeJarDialogOpen
+    this.setState({ removeJarDialogOpen: !tempRemoveDialogOpen })
+  }
+  
+  // New Jar Dialog
+  handleNewJarDialogOpen = () => {
+    const tempNewJarDialogOpen = this.state.newJarDialogOpen
+    this.setState({ newJarDialogOpen: !tempNewJarDialogOpen })
+  }
 	
-	handleNewJarSubmit(event){
+	handleNewJarSubmit = event =>{
 		event.preventDefault()
 		this.setState({
 			jars: [
@@ -64,14 +88,15 @@ class App extends React.Component{
 			],
 			pendingJar: ''
     })
-    this.handleNewJarDialogClose()
+    this.handleNewJarDialogOpen()
 	}
 
-	handleNewJarNameChangeAt(event){
+	handleNewJarNameChangeAt = event =>{
 		this.setState({ pendingJar: event.target.value })
 	}
 
-  handleChangeAt(event, indexToChange){
+  // Amount Change
+  handleAmountChangeAt = (event, indexToChange) =>{
     this.setState({
       jars: this.state.jars.map((jar, index) => {
         if(index === indexToChange){
@@ -85,7 +110,7 @@ class App extends React.Component{
     })
   }
 
-  handleSubmit(event, indexToChange){
+  handleAddAmountSubmit = (event, indexToChange) =>{
     event.preventDefault()
     this.setState({
       jars: this.state.jars.map((jar, index) => {
@@ -102,12 +127,21 @@ class App extends React.Component{
     })
   }
 
-  handleNewJarDialogOpen = () => {
-    this.setState({ newJarDialogOpen: true })
-  }
-
-  handleNewJarDialogClose = () => {
-    this.setState({ newJarDialogOpen: false })
+  handleMinusAmountSubmit = (event, indexToChange) =>{
+    event.preventDefault()
+    this.setState({
+      jars: this.state.jars.map((jar, index) => {
+        if (index === indexToChange) {
+          const newAmount = Number(jar.amount) - Number(jar.amountToBeAdded)
+          return {
+            ...jar,
+            amount: newAmount.toFixed(2),
+            amountToBeAdded: ''
+          }
+        }
+        return jar
+      })
+    })
   }
 
   render(){
@@ -115,15 +149,21 @@ class App extends React.Component{
       <div>
         <Title />
         <JarList  jars={this.state.jars} 
-                  handleChangeAt={this.handleChangeAt}
-                  handleSubmit={this.handleSubmit}
-                  handleRemoveAt={this.handleRemoveAt}
+                  handleAmountChangeAt={this.handleAmountChangeAt}
+                  handleAddAmountSubmit={this.handleAddAmountSubmit}
+                  handleMinusAmountSubmit={this.handleMinusAmountSubmit}
+                  
                   pendingJar = {this.state.pendingJar}
                   handleNewJarSubmit = {this.handleNewJarSubmit}
                   handleNewJarNameChangeAt = {this.handleNewJarNameChangeAt}
                   handleNewJarDialogOpen = {this.handleNewJarDialogOpen}
                   newJarDialogOpen = {this.state.newJarDialogOpen}
-                  handleNewJarDialogClose = {this.handleNewJarDialogClose} />
+                  
+                  removeJarDialogOpen={this.state.removeJarDialogOpen}
+                  handleRemoveAt={this.handleRemoveAt}
+                  handleRemoveDialogOpen={this.handleRemoveDialogOpen}
+                  changeRemoveBool={this.changeRemoveBool} />
+   
       </div>
     )
   }
