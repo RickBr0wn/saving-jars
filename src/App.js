@@ -32,15 +32,6 @@ class App extends React.Component{
         }
       ]
 		}
-		
-    this.handleChangeAt = this.handleChangeAt.bind(this)
-		this.handleSubmit = this.handleSubmit.bind(this)
-		this.handleNewJarNameChangeAt = this.handleNewJarNameChangeAt.bind(this)
-		this.handleNewJarSubmit = this.handleNewJarSubmit.bind(this)
-    this.handleRemoveAt = this.handleRemoveAt.bind(this)
-    this.handleNewJarDialogOpen = this.handleNewJarDialogOpen.bind(this)
-    this.handleNewJarDialogClose = this.handleNewJarDialogClose.bind(this)
-
 	}
 
 	handleRemoveAt = index =>
@@ -51,7 +42,7 @@ class App extends React.Component{
 			]
 		})
 	
-	handleNewJarSubmit(event){
+	handleNewJarSubmit = event =>{
 		event.preventDefault()
 		this.setState({
 			jars: [
@@ -67,11 +58,11 @@ class App extends React.Component{
     this.handleNewJarDialogClose()
 	}
 
-	handleNewJarNameChangeAt(event){
+	handleNewJarNameChangeAt = event =>{
 		this.setState({ pendingJar: event.target.value })
 	}
 
-  handleChangeAt(event, indexToChange){
+  handleChangeAt = (event, indexToChange) =>{
     this.setState({
       jars: this.state.jars.map((jar, index) => {
         if(index === indexToChange){
@@ -85,7 +76,7 @@ class App extends React.Component{
     })
   }
 
-  handleSubmit(event, indexToChange){
+  handleSubmit = (event, indexToChange) =>{
     event.preventDefault()
     this.setState({
       jars: this.state.jars.map((jar, index) => {
