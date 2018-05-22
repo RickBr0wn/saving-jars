@@ -4,6 +4,7 @@ body{
 
 .butt {
   outline:0 !important;
+  margin-left: -5px !important;
 }
 
 .amount{
@@ -19,7 +20,7 @@ body{
 .jar{
   background-color: #fff;
   border-radius: 5px;
-  padding: 20px 10px 20px 30px;
+  padding: 20px 0px 20px 15px;
   margin: 25px auto;
   -webkit-box-shadow: 3px 3px 11px 0px rgba(0,0,0,0.2);
   -moz-box-shadow: 3px 3px 11px 0px rgba(0,0,0,0.2);
@@ -55,5 +56,9 @@ ul{
 
 .remove-icon{
   margin-top: 10px;
-  margin-left: -10px;
+
+}
+
+.minus-icon{
+
 }

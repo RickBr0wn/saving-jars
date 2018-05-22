@@ -110,12 +110,29 @@ class App extends React.Component{
     })
   }
 
-  handleAmountSubmit = (event, indexToChange) =>{
+  handleAddAmountSubmit = (event, indexToChange) =>{
     event.preventDefault()
     this.setState({
       jars: this.state.jars.map((jar, index) => {
         if (index === indexToChange) {
           const newAmount = Number(jar.amount) + Number(jar.amountToBeAdded)
+          return {
+            ...jar,
+            amount: newAmount.toFixed(2),
+            amountToBeAdded: ''
+          }
+        }
+        return jar
+      })
+    })
+  }
+
+  handleMinusAmountSubmit = (event, indexToChange) =>{
+    event.preventDefault()
+    this.setState({
+      jars: this.state.jars.map((jar, index) => {
+        if (index === indexToChange) {
+          const newAmount = Number(jar.amount) - Number(jar.amountToBeAdded)
           return {
             ...jar,
             amount: newAmount.toFixed(2),
@@ -133,7 +150,8 @@ class App extends React.Component{
         <Title />
         <JarList  jars={this.state.jars} 
                   handleAmountChangeAt={this.handleAmountChangeAt}
-                  handleAmountSubmit={this.handleAmountSubmit}
+                  handleAddAmountSubmit={this.handleAddAmountSubmit}
+                  handleMinusAmountSubmit={this.handleMinusAmountSubmit}
                   
                   pendingJar = {this.state.pendingJar}
                   handleNewJarSubmit = {this.handleNewJarSubmit}
@@ -145,6 +163,7 @@ class App extends React.Component{
                   handleRemoveAt={this.handleRemoveAt}
                   handleRemoveDialogOpen={this.handleRemoveDialogOpen}
                   changeRemoveBool={this.changeRemoveBool} />
+   
       </div>
     )
   }
