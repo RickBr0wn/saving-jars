@@ -19,7 +19,6 @@ const styles = theme => ({
 
 const NewJar = props => {
   const { classes } = props
-  console.log(props)
   return(        
     <div>
       <Button variant="fab" 

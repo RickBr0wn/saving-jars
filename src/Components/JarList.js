@@ -28,7 +28,10 @@ const JarList = props => {
                                 amountToBeAdded={jar.amountToBeAdded}
                                 handleAmountSubmit={event => props.handleAmountSubmit(event, index)} />
 
-                    <RemoveJar handleRemoveAt={() => props.handleRemoveAt(index)} />
+                    <RemoveJar  handleRemoveAt={props.handleRemoveAt}
+                                removeJarDialogOpen={props.removeJarDialogOpen}
+                                handleRemoveDialogOpen={props.handleRemoveDialogOpen}
+                                changeRemoveBool={event => props.changeRemoveBool(event, index)} />
                   </div>
                 </div>
               ) 
