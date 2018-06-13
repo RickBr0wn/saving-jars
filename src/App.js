@@ -40,16 +40,14 @@ class App extends React.Component{
 
   // Remove
   handleRemoveAt = () => {
-    const newJar = this.state.jars.filter(
-      item => item.toBeRemoved === !true
-    )
+    const newJar = this.state.jars.filter(item => item.toBeRemoved === !true)
     this.setState({
       jars: [...newJar]
     })
     this.handleRemoveDialogOpen()
   }
 
-	changeRemoveBool = (event, indexToBeChanged) => {
+	changeRemoveBool = (indexToBeChanged) => {
     this.setState({
       jars: this.state.jars.map((item, index) => {
         if (index === indexToBeChanged) {

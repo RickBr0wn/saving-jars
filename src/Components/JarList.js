@@ -32,7 +32,7 @@ const JarList = props => {
                     <RemoveJar  handleRemoveAt={props.handleRemoveAt}
                                 removeJarDialogOpen={props.removeJarDialogOpen}
                                 handleRemoveDialogOpen={props.handleRemoveDialogOpen}
-                                changeRemoveBool={event => props.changeRemoveBool(event, index)} />
+                                changeRemoveBool={() => props.changeRemoveBool(index)} />
                   </div>
                 </div>
               ) 
